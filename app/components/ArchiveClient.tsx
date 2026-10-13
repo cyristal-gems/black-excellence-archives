@@ -19,12 +19,38 @@ import { CuratorModal } from "./CuratorModal";
 import { ProfileModal } from "./ProfileModal";
 import { PortraitFrames } from "./PortraitFrames";
 
+// Keep exact wording and provenance together; poetry retains its original line breaks.
 const heroQuotes = [
-  '"Define yourself for yourself." - Toni Morrison',
-  '"Not everything that is faced can be changed, but nothing can be changed until it is faced." - James Baldwin',
-  '"We are the ones we have been waiting for." - June Jordan',
-  '"Hold fast to dreams, for if dreams die, life is a broken-winged bird that cannot fly." - Langston Hughes',
-  '"If they don\'t give you a seat at the table, bring a folding chair." - Shirley Chisholm',
+  {
+    text: "But we do language. That may be the measure of our lives.",
+    author: "Toni Morrison",
+    source: "Nobel Lecture, December 7, 1993 (excerpt)",
+    sourceUrl: "https://www.nobelprize.org/prizes/literature/1993/morrison/lecture/",
+  },
+  {
+    text: "Not everything that is faced can be changed; but nothing can be changed until it is faced.",
+    author: "James Baldwin",
+    source: "As Much Truth As One Can Bear, The New York Times Book Review, January 14, 1962; provenance documented by Quote Investigator",
+    sourceUrl: "https://quoteinvestigator.com/2021/10/09/faced/",
+  },
+  {
+    text: "we are the ones we have been waiting for",
+    author: "June Jordan",
+    source: "Poem for South African Women (closing line), Academy of American Poets",
+    sourceUrl: "https://poets.org/poem/poem-south-african-women",
+  },
+  {
+    text: "Hold fast to dreams\nFor if dreams die\nLife is a broken-winged bird\nThat cannot fly.",
+    author: "Langston Hughes",
+    source: "Dreams (first stanza), Poetry Foundation",
+    sourceUrl: "https://www.poetryfoundation.org/poems/150995/dreams-5d767850da976",
+  },
+  {
+    text: "I am and always will be a catalyst for change.",
+    author: "Shirley Chisholm",
+    source: "Shirley Chisholm for President, Smithsonian National Museum of African American History and Culture",
+    sourceUrl: "https://nmaahc.si.edu/shirley-chisholm-president",
+  },
 ];
 
 const reloadArchive = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -146,7 +172,8 @@ export function ArchiveClient({ skipIntro = false }: { skipIntro?: boolean }) {
           </div>
           <div className="hero-content">
             <p className="hero-quote" aria-live="polite">
-              {heroQuotes[quoteIndex]}
+              <span className="hero-quote-text">“{heroQuotes[quoteIndex].text}”</span>
+              {" — "}{heroQuotes[quoteIndex].author}
             </p>
             <h1 id="archive-title">{archiveName}</h1>
             <p className="hero-tagline">{archiveTagline}</p>
